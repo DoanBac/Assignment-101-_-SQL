@@ -1,4 +1,2 @@
 flask
 requests
-TELEGRAM_TOKEN = "8210903805:AAEhDqmSda2n5MVTCELVlmnRNkhDoKbvSzo"
-CHAT_ID = "1638555472"
