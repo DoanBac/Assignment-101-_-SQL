@@ -10,6 +10,8 @@ CHAT_ID = os.environ.get("CHAT_ID")
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.json
+    print("Received data:", data)  # Thêm dòng này để debug
+
     signal = data.get('signal', 'unknown')
     symbol = data.get('symbol', 'unknown')
     price = data.get('price', 'unknown')
@@ -23,8 +25,11 @@ def webhook():
         "chat_id": CHAT_ID,
         "text": message
     }
-    requests.post(telegram_url, json=payload)
+    response = requests.post(telegram_url, json=payload)
+    print("Telegram response:", response.text)  # Thêm dòng này để kiểm tra phản hồi
+
     return "OK", 200
+
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
